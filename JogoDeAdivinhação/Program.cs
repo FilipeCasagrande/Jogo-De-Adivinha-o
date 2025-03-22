@@ -17,7 +17,7 @@ namespace JogoDeAdivinhação
                 Console.WriteLine("Jogo Da Adivinhação");
                 Console.WriteLine("----------------------------------------");
 
-                //escolha de dificuldade
+
                 Console.WriteLine("Escolha o nivel de dificuldade");
                 Console.WriteLine("----------------------------------------");
                 Console.WriteLine("1 - Fácil (10 tentativas)");
@@ -28,7 +28,9 @@ namespace JogoDeAdivinhação
                 Console.Write("Digite sua escolha: ");
                 string escolhadificuldade = Console.ReadLine();
                 string Numerod;
-                int pontuacao = 20;
+                decimal pontuacao = 1000m;
+                decimal numero = 0m;
+
                 int totaldetentativas = 0;
 
                 if (escolhadificuldade == "1")
@@ -59,6 +61,7 @@ namespace JogoDeAdivinhação
                     {
                         Console.WriteLine("----------------------------------------");
                         Console.WriteLine("Parabéns você acertou! ");
+                        Console.WriteLine("Sua pontuação foi: " + pontuacao);
                         Console.WriteLine("----------------------------------------");
                         break;
                     }
@@ -68,7 +71,7 @@ namespace JogoDeAdivinhação
                         Console.WriteLine("----------------------------------------");
                         Console.WriteLine($"Que pena! Você usou todas as tentativas. O número era {ns}.");
                         Console.WriteLine("----------------------------------------");
-                        break ;
+                        break;
                     }
 
 
@@ -77,12 +80,27 @@ namespace JogoDeAdivinhação
                         Console.WriteLine("----------------------------------------");
                         Console.WriteLine("O numero digitado foi Maior que o número secreto!");
                         Console.WriteLine("----------------------------------------");
+                        numero = (Numerochute - ns) / 2m;
+                        pontuacao = pontuacao - numero;
                     }
                     else if (Numerochute < ns)
                     {
                         Console.WriteLine("----------------------------------------");
                         Console.WriteLine("O numero digitado foi Menor que o número secreto!");
                         Console.WriteLine("----------------------------------------");
+                        numero = (Numerochute - ns) / 2;
+                        if (numero < 0m)
+                        {
+                            numero = -numero;
+                        }
+                        pontuacao = pontuacao - numero;
+                    }
+                    if (pontuacao < 0)
+                    {
+                        Console.WriteLine("----------------------------------------");
+                        Console.WriteLine($"Que pena! sua pontuação chegou a 0 você perdeu!");
+                        Console.WriteLine("----------------------------------------");
+                        break;
                     }
 
                     Console.WriteLine("Mostrar números ja digitados? [S] - Mostrar, [N] continuar: ");
@@ -96,7 +114,9 @@ namespace JogoDeAdivinhação
                         }
                         Console.WriteLine("Precione Enter para continuar");
                         Console.ReadLine();
+
                     }
+                    numero = 0m;
                     contarray++;
                 }
 
