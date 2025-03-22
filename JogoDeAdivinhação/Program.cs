@@ -1,4 +1,5 @@
 ﻿using System;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace JogoDeAdivinhação
 {
@@ -26,7 +27,8 @@ namespace JogoDeAdivinhação
 
                 Console.Write("Digite sua escolha: ");
                 string escolhadificuldade = Console.ReadLine();
-
+                string Numerod;
+                int pontuacao = 20;
                 int totaldetentativas = 0;
 
                 if (escolhadificuldade == "1")
@@ -52,12 +54,7 @@ namespace JogoDeAdivinhação
                     Console.Write("Digite um número (de 1 à 20 )para Chutar: ");
                     int Numerochute = Convert.ToInt32(Console.ReadLine());
                     array[contarray] = Numerochute;
-                    Console.WriteLine("Os números já inseridos são");
-                    for (int cont = 0; cont <= contarray; cont++)
-                    {
-                        Console.WriteLine("número: " + array[cont]);
-                    }
-                    
+
                     if (Numerochute == ns)
                     {
                         Console.WriteLine("----------------------------------------");
@@ -71,6 +68,7 @@ namespace JogoDeAdivinhação
                         Console.WriteLine("----------------------------------------");
                         Console.WriteLine($"Que pena! Você usou todas as tentativas. O número era {ns}.");
                         Console.WriteLine("----------------------------------------");
+                        break ;
                     }
 
 
@@ -80,14 +78,25 @@ namespace JogoDeAdivinhação
                         Console.WriteLine("O numero digitado foi Maior que o número secreto!");
                         Console.WriteLine("----------------------------------------");
                     }
-                    else
+                    else if (Numerochute < ns)
                     {
                         Console.WriteLine("----------------------------------------");
                         Console.WriteLine("O numero digitado foi Menor que o número secreto!");
                         Console.WriteLine("----------------------------------------");
                     }
-                    Console.WriteLine("Precione Enter para continuar");
-                    Console.ReadLine();
+
+                    Console.WriteLine("Mostrar números ja digitados? [S] - Mostrar, [N] continuar: ");
+                    Numerod = Console.ReadLine();
+
+                    if (Numerod == "s")
+                    {
+                        for (int cont = 0; cont <= contarray; cont++)
+                        {
+                            Console.WriteLine("número: " + array[cont]);
+                        }
+                        Console.WriteLine("Precione Enter para continuar");
+                        Console.ReadLine();
+                    }
                     contarray++;
                 }
 
