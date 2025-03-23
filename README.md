@@ -1,6 +1,6 @@
 # Jogo De Adivinhação
 
-![](https://imgur.com/NwG4RnA.gif)
+![]([https://imgur.com/a/TAbVym8](https://imgur.com/9sObFqJ).gif)
 
 ## Introdução
 Um jogo de adivinhação simples com geração de números aleatórios, tres tipos de dificuldade, além de poder visualizar os números já informados anteriormente
